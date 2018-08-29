@@ -1,0 +1,107 @@
+class Calculation:
+    def __init__(self,n1,n2):
+        self.num1 = n1
+        self.num2 = n2
+    def add(self):
+        print("The sum of %d and %d is %d"%(self.num1,self.num2,self.num1+self.num2))
+    def sub(self):
+        print("The subtraction of %d and %d is %d"%(self.num1,self.num2,self.num1-self.num2))
+    def mul(self):
+        print("The multiplication of %d and %d is %d"%(self.num1,self.num2,self.num1*self.num2))
+    def div(self):
+        print("The division of %d by %d is %d"%(self.num1,self.num2,self.num1/self.num2))
+    def power(self):
+        print("The power of %d is %d ,so we get %d"%(self.num1,self.num2,self.num1**self.num2))
+    def lcm(self):
+       if self.num1 > self.num2:
+         greater = self.num1
+       else:
+         greater = self.num2
+       while(True):
+         if greater % self.num1 == 0 and greater % self.num2 == 0:
+           lcm = greater
+           break
+         greater += 1
+       print(lcm)
+    def hcf(self):
+      if self.num1 > self.num2:
+        smaller = self.num2
+      else:
+        smaller = self.num1
+      for i in range(1, smaller+1):
+        if((self.num1 % i == 0) and (self.num2 % i == 0)):
+            hcf = i
+      print(hcf)
+    @staticmethod  
+    def palindrome(value):
+        block = 0
+        temp = value
+        while value>0:
+            rem = value%10
+            block = block*10+rem
+            value = value//10
+        print("Yup bro it's a palindromic number" if temp == block else "Nope bro it's not a palindromic number")
+    def prime(value):
+        for y in range(2,value):
+            print("Yup bro it's a prime number" if value%y ==  0 else "Nope bro it's not a prime number")
+            break
+        
+    
+
+list = ["Welcome to Semi-smart chelkulator!!!","My name is Bro","You can press 'e' when you want to exit"]
+print(list[0]," "*20,"*","\n",list[1]," "*33,"*","\n",list[2]," "*16,"*","\n",("*"*58))
+count = 0 
+while True:  
+ string1 = input("What i can do for you ? :) \n").split()
+ if string1[0]== "e":
+     exit()
+ num_list = []
+ lower_list = []
+ for x in string1:
+    lower_list.append(x.lower())
+    try:
+        num_list.append(eval(x))
+    except:
+        pass
+ for x in lower_list:
+   try:  
+    if x == "add" or x == "addition" or x == "jod" or x == "plus":
+        ob = Calculation(num_list[0],num_list[1])
+        ob.add()
+        break
+    elif x == "sum":
+        ob = Calculation(num_list[1],num_list[2])
+        ob.add()
+        break
+    elif x == "subtract" or x == "subtraction" or x == "ghataynge" or x == "minus":
+        ob = Calculation(num_list[0],num_list[1])
+        ob.sub()
+        break
+    elif x == "mul" or x == "multiply" or x == "guna" or x == "multiplication" or x == "into" or x == "product":
+        ob = Calculation(num_list[0],num_list[1])
+        ob.mul()
+        break
+    elif x == "power" or x == "exponend" or x == "ghat" or x == "superscript":
+        ob = Calculation(num_list[0],num_list[1])
+        ob.power()
+        break
+    elif x == "lcm":
+        ob = Calculation(num_list[0],num_list[1])
+        ob.lcm()
+        break
+    elif x == "hcf" or x == "gcf":
+        ob = Calculation(num_list[0],num_list[1])
+        ob.hcf()
+        break
+    elif x == "palindrome" or x == "palindromic":
+        Calculation.palindrome(num_list[0])
+        break
+    elif x == "prime":
+        Calculation.prime(num_list[0])
+        break
+   except:
+       count += 1
+       print("Be meaningful,you are a human...huh")
+       break
+ else:
+    print("Sorry i have little mind...let it grow :)")
